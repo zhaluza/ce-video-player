@@ -1,17 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
-import mandoVideo from './assets/mandalorian.mp4';
-import mandoVideoPreview from './assets/mandolorian-preview.gif';
-import babyYoda from './assets/baby-yoda.svg';
+
 import './sass/app.scss';
 
-const Video = () => {
+const Video = ({ video, preview, logo, skipInterval }) => {
   const [previewOff, setPreviewOff] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(null);
   const [showLogo, setShowLogo] = useState(false);
   const [logoPosition, setLogoPosition] = useState('left');
-  const skipInterval = 5;
   const videoRef = useRef(null);
   const progressRef = useRef(null);
 
@@ -59,16 +56,15 @@ const Video = () => {
           handleProgress(e.target.currentTime, e.target.duration);
         }}
         onEnded={() => setIsPlaying(false)}
-        src={mandoVideo}
-        poster={mandoVideoPreview}
+        src={video}
+        poster={preview}
       ></video>
 
       <img
         className={`baby-yoda ${showLogo && previewOff ? 'show-logo' : ''} ${
           logoPosition === 'left' && 'logo-left'
         } ${logoPosition === 'right' && 'logo-right'}`}
-        src={babyYoda}
-        alt="Baby Yoda"
+        src={logo}
       />
       <div className="video__controls">
         <div className="progress">

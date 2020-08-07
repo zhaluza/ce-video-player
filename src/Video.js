@@ -68,7 +68,7 @@ const Video = ({ video, preview, logo, skipInterval }) => {
     } else if (currentTime > 3 && currentTime < duration - 3) {
       setShowLogo(false);
     }
-  }, [currentTime]);
+  }, [currentTime, duration]);
   // TODO: General styling
   return (
     <div className="video__container">

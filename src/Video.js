@@ -11,6 +11,7 @@ const Video = () => {
   const [duration, setDuration] = useState(null);
   const [showLogo, setShowLogo] = useState(false);
   const [logoPosition, setLogoPosition] = useState('left');
+  const skipInterval = 5;
   const videoRef = useRef(null);
   const progressRef = useRef(null);
 
@@ -80,8 +81,8 @@ const Video = () => {
           <button title="play video" onClick={() => togglePlay(videoRef.current)}>
             {isPlaying ? <i className="fas fa-pause"></i> : <i className="fas fa-play"></i>}
           </button>
-          <button onClick={() => handleSkip(-5)}>-5s</button>
-          <button onClick={() => handleSkip(5)}>+5s</button>
+          <button onClick={() => handleSkip(-skipInterval)}>-{skipInterval}s</button>
+          <button onClick={() => handleSkip(skipInterval)}>+{skipInterval}s</button>
           <input
             type="range"
             className="slider"

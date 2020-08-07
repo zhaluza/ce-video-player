@@ -38,6 +38,9 @@ const App = () => {
     } else setShowLogo(false);
   }, [currentTime]);
   // TODO: Make baby yoda switch sides at end
+  // TODO: Add skip ability
+  // TODO: Click progress bar to adjust video progress
+  // TODO: General styling
   return (
     <div className="app">
       <div className="video__container">

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import mandoVideo from './assets/mandalorian.mp4';
+import babyYoda from './assets/baby-yoda.svg';
 import './sass/app.scss';
 
 const App = () => {
@@ -9,7 +10,6 @@ const App = () => {
   const [showLogo, setShowLogo] = useState(false);
   const videoRef = useRef(null);
   const progressRef = useRef(null);
-  console.log(videoRef);
 
   const handleProgress = (currentTime, videoDuration) => {
     // setVideoProgress((currentTime / videoDuration) * 100);
@@ -19,9 +19,10 @@ const App = () => {
     progressRef.current.style.flexBasis = `${progress}%`;
   };
   const togglePlay = (video) => {
+    // console.log(video);
     const toggle = video.paused ? 'play' : 'pause';
     video[toggle]();
-    // handleProgress(video);
+    handleProgress(video);
     setIsPlaying((prevState) => !prevState);
   };
 
@@ -34,20 +35,25 @@ const App = () => {
       setShowLogo(true);
     } else setShowLogo(false);
   }, [currentTime]);
-
+  // TODO: add animated preview - use conditional rendering to switch between sources?
   return (
     <div className="app">
       <div className="video__container">
         <video
-          className={`video__player ${showLogo ? 'show-logo' : ''}`}
-          src={mandoVideo}
+          className="video__player"
           ref={videoRef}
           onTimeUpdate={(e) => {
-            console.log(e.target.currentTime);
             handleProgress(e.target.currentTime, e.target.duration);
           }}
-        ></video>
-        {showLogo && <p>Show Logo</p>}
+          onEnded={() => setIsPlaying(false)}
+        >
+          <source src={mandoVideo} />
+        </video>
+        <img
+          className={`baby-yoda ${showLogo ? 'show-logo' : ''}`}
+          src={babyYoda}
+          alt="Baby Yoda"
+        />
         <div className="video__controls">
           <div className="progress">
             <div className="progress__bar">

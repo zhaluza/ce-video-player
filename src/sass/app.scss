@@ -18,6 +18,10 @@ body {
 
 .video__container {
   position: relative;
+  width: 80%;
+  .video__player {
+    width: 100%;
+  }
 
   .baby-yoda {
     width: 15vw;
@@ -44,6 +48,7 @@ body {
 
   .video__controls {
     display: flex;
+    width: 100%;
     flex-direction: column;
     .progress__bar {
       cursor: pointer;
@@ -62,10 +67,9 @@ body {
     }
     .controls__bottom {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       background-color: rgb(223, 223, 223);
-      .time {
-      }
     }
   }
 }

@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import mandoVideo from './assets/mandalorian.mp4';
+import mandoVideoPreview from './assets/mandolorian-preview.gif';
 import babyYoda from './assets/baby-yoda.svg';
 import './sass/app.scss';
 
 const App = () => {
+  const [previewOff, setPreviewOff] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(null);
@@ -19,7 +21,7 @@ const App = () => {
     progressRef.current.style.flexBasis = `${progress}%`;
   };
   const togglePlay = (video) => {
-    // console.log(video);
+    if (!previewOff) setPreviewOff(true);
     const toggle = video.paused ? 'play' : 'pause';
     video[toggle]();
     handleProgress(video);
@@ -35,7 +37,6 @@ const App = () => {
       setShowLogo(true);
     } else setShowLogo(false);
   }, [currentTime]);
-  // TODO: add animated preview - use conditional rendering to switch between sources?
   // TODO: Make baby yoda switch sides at end
   return (
     <div className="app">
@@ -47,11 +48,12 @@ const App = () => {
             handleProgress(e.target.currentTime, e.target.duration);
           }}
           onEnded={() => setIsPlaying(false)}
-        >
-          <source src={mandoVideo} />
-        </video>
+          src={mandoVideo}
+          poster={mandoVideoPreview}
+        ></video>
+
         <img
-          className={`baby-yoda ${showLogo ? 'show-logo' : ''}`}
+          className={`baby-yoda ${showLogo && previewOff ? 'show-logo' : ''}`}
           src={babyYoda}
           alt="Baby Yoda"
         />

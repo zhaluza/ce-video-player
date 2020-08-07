@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import mandoVideo from './assets/mandalorian.mp4';
 import babyYoda from './assets/baby-yoda.svg';
 import './sass/app.scss';
@@ -36,6 +36,7 @@ const App = () => {
     } else setShowLogo(false);
   }, [currentTime]);
   // TODO: add animated preview - use conditional rendering to switch between sources?
+  // TODO: Make baby yoda switch sides at end
   return (
     <div className="app">
       <div className="video__container">

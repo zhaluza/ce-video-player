@@ -41,6 +41,23 @@ const Video = ({ video, preview, logo, skipInterval }) => {
     videoRef.current.currentTime = newTime;
   };
 
+  const calcTime = (time) => {
+    if (isNaN(time)) {
+      return '0:00';
+    } else {
+      const roundedTime = Math.floor(time);
+      if (roundedTime < 10) {
+        return `0:0${roundedTime}`;
+      } else if (roundedTime < 60) {
+        return `0:${roundedTime}`;
+      } else {
+        const minutes = Math.floor(60 / roundedTime);
+        const seconds = 60 % roundedTime;
+        return `${minutes}:${seconds}`;
+      }
+    }
+  };
+
   useEffect(() => {
     if (currentTime <= 3) {
       setShowLogo(true);
@@ -52,7 +69,6 @@ const Video = ({ video, preview, logo, skipInterval }) => {
       setShowLogo(false);
     }
   }, [currentTime]);
-  // TODO: Click progress bar to adjust video progress
   // TODO: General styling
   return (
     <div className="video__container">
@@ -92,6 +108,7 @@ const Video = ({ video, preview, logo, skipInterval }) => {
           <button title="play video" onClick={() => togglePlay(videoRef.current)}>
             {isPlaying ? <i className="fas fa-pause"></i> : <i className="fas fa-play"></i>}
           </button>
+          <p className="time">{calcTime(currentTime)}</p>
           <button onClick={() => handleSkip(-skipInterval)}>-{skipInterval}s</button>
           <button onClick={() => handleSkip(skipInterval)}>+{skipInterval}s</button>
           <input

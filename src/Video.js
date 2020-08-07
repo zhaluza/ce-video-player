@@ -10,6 +10,7 @@ const Video = ({ video, preview, logo, skipInterval }) => {
   const [showLogo, setShowLogo] = useState(false);
   const [logoPosition, setLogoPosition] = useState('left');
   const videoRef = useRef(null);
+  const progressContainerRef = useRef(null);
   const progressRef = useRef(null);
 
   const handleProgress = (currentTime, videoDuration) => {
@@ -33,6 +34,11 @@ const Video = ({ video, preview, logo, skipInterval }) => {
 
   const handleSkip = (num) => {
     videoRef.current.currentTime += num;
+  };
+
+  const handleScrub = (percent) => {
+    const newTime = (videoRef.current.duration * percent) / 100;
+    videoRef.current.currentTime = newTime;
   };
 
   useEffect(() => {
@@ -69,7 +75,15 @@ const Video = ({ video, preview, logo, skipInterval }) => {
       />
       <div className="video__controls">
         <div className="progress">
-          <div className="progress__bar">
+          <div
+            className="progress__bar"
+            ref={progressContainerRef}
+            onClick={(e) => {
+              const position = e.nativeEvent.offsetX;
+              const width = progressContainerRef.current.offsetWidth;
+              handleScrub((position / width) * 100);
+            }}
+          >
             <div className="bar__filled" ref={progressRef}></div>
           </div>
           <div className="progress__time"></div>

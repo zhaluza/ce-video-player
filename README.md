@@ -1,68 +1,80 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CE Video Player
 
-## Available Scripts
+A video player with some customizable features. Displays a preview animation, as well as a logo at
+the beginning and end of the video.
 
-In the project directory, you can run:
+Video component features a scrubbable progress bar, running time count, volume control, and skip
+functionality.
 
-### `npm start`
+To demo a live version of this app, [click here](https://hopeful-stonebraker-acf305.netlify.app/).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- TABLE OF CONTENTS -->
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Table of Contents
 
-### `npm test`
+- [About the Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [License](#license)
+- [Contact](#contact)
+- [Acknowledgements](#acknowledgements)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- ABOUT THE PROJECT -->
 
-### `npm run build`
+## About The Project
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align="center">
+    <img width="500" src="https://github.com/zhaluza/ce-video-player/blob/master/screenshots/screenshot.png?raw=true">
+</p>
+### Built With
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- [React](https://reactjs.org/)
+- [Sass](https://sass-lang.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- GETTING STARTED -->
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Prerequisites
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- npm
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```sh
+npm install npm@latest -g
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Installation
 
-## Learn More
+1. Clone the repo
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+git clone https://github.com/zhaluza/ce-video-player.git
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Install NPM packages
 
-### Code Splitting
+```sh
+npm i
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Usage
 
-### Analyzing the Bundle Size
+Boot up the app by running the following script:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```sh
+npm start
+```
 
-### Making a Progressive Web App
+You can now access the app at `http://localhost:3000` in your browser.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Roadmap
 
-### Advanced Configuration
+There's a lot of room for added customization, particularly in terms of the UI.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## License
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Distributed under the ISC License.

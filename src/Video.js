@@ -38,6 +38,7 @@ const Video = ({ video, preview, logo, skipInterval }) => {
   useEffect(() => {
     if (currentTime <= 3) {
       setShowLogo(true);
+      setLogoPosition('left');
     } else if (duration - currentTime <= 3) {
       setShowLogo(true);
       setLogoPosition('right');

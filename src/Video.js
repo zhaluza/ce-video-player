@@ -33,6 +33,10 @@ const Video = () => {
     video.volume = value;
   };
 
+  const handleSkip = (num) => {
+    videoRef.current.currentTime += num;
+  };
+
   useEffect(() => {
     if (currentTime <= 3) {
       setShowLogo(true);
@@ -43,7 +47,6 @@ const Video = () => {
       setShowLogo(false);
     }
   }, [currentTime]);
-  // TODO: Add skip ability
   // TODO: Click progress bar to adjust video progress
   // TODO: General styling
   return (
@@ -77,8 +80,8 @@ const Video = () => {
           <button title="play video" onClick={() => togglePlay(videoRef.current)}>
             {isPlaying ? <i className="fas fa-pause"></i> : <i className="fas fa-play"></i>}
           </button>
-          <button>-10s</button>
-          <button>+10s</button>
+          <button onClick={() => handleSkip(-5)}>-5s</button>
+          <button onClick={() => handleSkip(5)}>+5s</button>
           <input
             type="range"
             className="slider"

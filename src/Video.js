@@ -10,6 +10,7 @@ const Video = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(null);
   const [showLogo, setShowLogo] = useState(false);
+  const [logoPosition, setLogoPosition] = useState('left');
   const videoRef = useRef(null);
   const progressRef = useRef(null);
 
@@ -33,11 +34,15 @@ const Video = () => {
   };
 
   useEffect(() => {
-    if (currentTime <= 3 || duration - currentTime <= 3) {
+    if (currentTime <= 3) {
       setShowLogo(true);
-    } else setShowLogo(false);
+    } else if (duration - currentTime <= 3) {
+      setShowLogo(true);
+      setLogoPosition('right');
+    } else if (currentTime > 3 && currentTime < duration - 3) {
+      setShowLogo(false);
+    }
   }, [currentTime]);
-  // TODO: Make baby yoda switch sides at end
   // TODO: Add skip ability
   // TODO: Click progress bar to adjust video progress
   // TODO: General styling
@@ -55,7 +60,9 @@ const Video = () => {
       ></video>
 
       <img
-        className={`baby-yoda ${showLogo && previewOff ? 'show-logo' : ''}`}
+        className={`baby-yoda ${showLogo && previewOff ? 'show-logo' : ''} ${
+          logoPosition === 'left' && 'logo-left'
+        } ${logoPosition === 'right' && 'logo-right'}`}
         src={babyYoda}
         alt="Baby Yoda"
       />
